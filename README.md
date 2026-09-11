@@ -1,68 +1,57 @@
 # Customer Churn Intelligence & Retention Analytics
 
-> An end-to-end data analytics project using Python, SQL, and Power BI to identify customer churn patterns, quantify revenue exposure, and develop data-driven retention strategies.
+**End-to-end customer analytics project using Python, SQL, Power BI, and Machine Learning to identify churn drivers, quantify revenue exposure, predict customer churn risk, and support retention strategy.**
 
 ---
 
-## 📌 Project Overview
+## Project Overview
 
-Customer churn is a major challenge for subscription-based businesses. This project analyzes customer behavior to understand **who is leaving, which factors are associated with churn, the financial exposure linked to churned customers, and where retention efforts should be prioritized.**
+Customer churn directly impacts recurring revenue and customer lifetime value.
 
-The project combines exploratory data analysis, SQL analytics, predictive modeling, and interactive business intelligence into one end-to-end workflow.
+This project analyzes **7,043 telecom customers** to identify the customer characteristics and behaviors associated with churn, quantify the financial exposure linked to churned customers, and translate analytical findings into actionable retention strategies.
 
-**Dataset:** IBM Telco Customer Churn benchmark dataset representing a fictional telecommunications company.
-
----
-
-## 🎯 Business Objectives
-
-The analysis aims to answer five key business questions:
-
-- What is the overall customer churn rate?
-- Which customer segments have the highest churn?
-- Which contract, service, tenure, and payment characteristics are associated with churn?
-- How much monthly billing is associated with customers who have churned?
-- What retention strategies should the business prioritize?
+The analysis combines exploratory data analysis, SQL analytics, predictive modeling, and interactive business intelligence.
 
 ---
 
-## 🛠️ Technologies Used
+## Business Objectives
 
-| Area | Tools |
-|---|---|
-| Programming | Python |
-| Data Analysis | Pandas, NumPy |
-| Visualization | Matplotlib, Power BI |
-| Database | MySQL |
-| SQL Analysis | MySQL Workbench |
-| Machine Learning | Scikit-learn |
-| Development | Jupyter Notebook |
-| Version Control | GitHub |
+- Measure overall customer churn
+- Identify high-churn customer segments
+- Analyze the relationship between churn and customer tenure, contracts, services, and payment methods
+- Quantify monthly billing associated with churned customers
+- Identify customers who could be prioritized for retention
+- Develop data-driven retention recommendations
 
 ---
 
-## 📊 Key Business Findings
-
-### Overall Churn
+## Executive Summary
 
 | Metric | Result |
 |---|---:|
-| Total Customers | 7,043 |
-| Churned Customers | 1,869 |
+| Total Customers | **7,043** |
+| Churned Customers | **1,869** |
 | Overall Churn Rate | **26.5%** |
+| Monthly Charges Associated with Churned Customers | **$139,130.85** |
+| Model ROC-AUC | **84.2%** |
+| High-Risk Customers Identified | **93** |
 
-### Highest-Risk Segments
+### Highest-Churn Segments
 
-| Customer Segment | Churn Rate |
+| Segment | Churn Rate |
 |---|---:|
-| New customers | **47.4%** |
-| Month-to-month contracts | **42.7%** |
-| Fiber optic customers | **41.9%** |
-| Electronic check customers | **45.3%** |
+| New Customers | **47.4%** |
+| Electronic Check | **45.3%** |
+| Month-to-Month Contract | **42.7%** |
+| Fiber Optic Customers | **41.9%** |
+
+---
+
+## Key Business Insights
 
 ### Customer Tenure
 
-Churn decreases substantially as customer tenure increases:
+Churn declines substantially as customer tenure increases.
 
 - New customers: **47.4%**
 - Developing customers: **28.7%**
@@ -71,30 +60,27 @@ Churn decreases substantially as customer tenure increases:
 
 ### Contract Type
 
-Contract length shows a strong association with churn:
+Longer-term contracts are associated with substantially lower churn.
 
 - Month-to-month: **42.7%**
 - One year: **11.3%**
 - Two year: **2.8%**
 
-### Revenue Exposure
+### Customer Value
 
-Customers who churned were associated with approximately:
+Customers who churned had higher average monthly charges than customers who stayed.
 
-**$139,130.85 in monthly charges**
+- Churned customers: **$74.44**
+- Customers who stayed: **$61.27**
 
-Churned customers also had higher average monthly charges:
+Customers who churned were associated with **$139,130.85 in monthly charges**, representing the monthly billing exposure associated with the churned customer group.
 
-- Churned: **$74.44**
-- Stayed: **$61.27**
-
-> The monthly charges figure is used as a **revenue-at-risk proxy** based on observed customer charges. It is not a forecast of future revenue loss.
-
+> This figure is a revenue exposure proxy based on observed monthly charges, not a forecast of future revenue loss.
 ---
 
-## 🤖 Predictive Modeling
+## Predictive Modeling
 
-A **Logistic Regression** model was developed to estimate customer churn risk.
+A **Logistic Regression** model was developed to estimate the probability that a customer would churn.
 
 ### Model Performance
 
@@ -106,99 +92,109 @@ A **Logistic Regression** model was developed to estimate customer churn risk.
 | F1 Score | **60.5%** |
 | ROC-AUC | **84.2%** |
 
-Using a churn-probability threshold of **70%**, the model identified **93 customers** in the test set as high-risk candidates for retention prioritization.
+Using a **70% churn-probability threshold**, the model identified **93 customers** in the test set as high-risk candidates for retention prioritization.
 
-The model was designed as a decision-support tool rather than an automated decision-maker.
+The model is intended to support business decision-making rather than automatically determine customer treatment.
 
----
+### Key Predictive Signals
 
-## 🔎 Key Insights
+The model identified several features associated with higher or lower churn probability.
 
-The analysis identified several important retention signals:
+**Higher churn association:**
+- Fiber optic internet service
+- Electronic check payments
+- Month-to-month contracts
+- Streaming services
+- Multiple-line phone service
 
-1. **New customers are the most vulnerable segment**, with churn falling as tenure increases.
-2. **Month-to-month customers have substantially higher churn** than customers on longer-term contracts.
-3. **Fiber optic customers show elevated churn** compared with other internet-service groups.
-4. **Electronic check users have the highest churn rate** among payment methods.
-5. **Churned customers have higher average monthly charges**, increasing the potential financial impact of customer loss.
-6. The combination of **contract type and tenure** provides a stronger retention lens than examining either factor independently.
+**Lower churn association:**
+- Two-year contracts
+- One-year contracts
+- Online security services
+- Technical support
+- Having dependents
 
----
-
-## 💡 Retention Recommendations
-
-### 1. Strengthen Early-Customer Engagement
-
-Prioritize onboarding, education, support, and engagement during the first 12 months.
-
-### 2. Encourage Longer-Term Contracts
-
-Develop appropriate incentives for month-to-month customers to consider longer-term contracts.
-
-### 3. Investigate Fiber Customer Experience
-
-Review service quality, pricing, customer support, and expectations among fiber-optic customers.
-
-### 4. Review Electronic Payment Journeys
-
-Investigate the customer experience surrounding electronic-check payments and encourage convenient payment alternatives where appropriate.
-
-### 5. Prioritize High-Value Risk Segments
-
-Combine churn risk with customer value to help retention teams focus resources where potential financial exposure is greatest.
+> Model coefficients represent associations while controlling for other features in the model. They should not be interpreted as evidence of causation.
 
 ---
 
-## 📈 Power BI Dashboard
+## Power BI Dashboard
 
-The Power BI report contains three pages:
+The Power BI report translates the analysis into an interactive business intelligence solution across three pages.
 
 ### Executive Overview
-Provides high-level KPIs and major customer churn patterns.
+
+Provides a high-level view of:
+
+- Total customers
+- Churned customers
+- Overall churn rate
+- Monthly charges associated with churned customers
+- Churn by contract type
+- Churn by tenure
+- Churn by internet service
+
+![Executive Overview](reports/executive-overview.png)
 
 ### Churn Drivers
-Explores churn across payment method, customer characteristics, billing behavior, and internet service/contract combinations.
+
+Examines churn across key customer and service characteristics, including:
+
+- Payment method
+- Senior citizen status
+- Paperless billing
+- Internet service
+- Internet service and contract combinations
+
+![Churn Drivers](reports/churn-drivers.png)
 
 ### Customer Risk & Retention
-Highlights retention priorities using customer tenure, contract behavior, churn metrics, and a contract-by-tenure analysis.
 
+Focuses on customer segments that require greater retention attention, including:
+
+- New customer churn
+- Month-to-month churn
+- Contract and tenure combinations
+- Retention priorities
+- Recommended retention actions
+
+![Customer Risk & Retention](reports/customer-risk-retention.png)
 ---
 
-## 🗄️ SQL Analysis
+## SQL Analysis
 
-MySQL was used to create a dedicated `customer_churn` database and analyze the imported customer data.
+MySQL was used to independently analyze and validate the key findings from the Python analysis.
 
-SQL analysis includes:
+The SQL analysis covers:
 
-- Customer churn distribution
+- Churn distribution
 - Churn by contract type
 - Churn by customer tenure
 - Churn by internet service
 - Churn by payment method
 - Monthly charges by churn status
 
-The SQL analysis was used to validate key findings from the Python analysis and support the business intelligence dashboard.
+**Database:** `customer_churn`  
+**Environment:** MySQL Workbench
 
 ---
 
-## 🐍 Python Analysis
+## Technology Stack
 
-Python was used for:
-
-- Data quality assessment
-- Data cleaning
-- Exploratory data analysis
-- Customer segmentation
-- Churn analysis
-- Revenue exposure analysis
-- Feature preparation
-- Logistic regression
-- Model evaluation
-- Customer risk analysis
+| Category | Technologies |
+|---|---|
+| Programming | Python |
+| Data Analysis | Pandas, NumPy |
+| Visualization | Matplotlib, Power BI |
+| Database | MySQL |
+| SQL | MySQL Workbench |
+| Machine Learning | Scikit-learn |
+| Development | Jupyter Notebook |
+| Version Control | GitHub |
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```text
 Customer-Churn-Intelligence/
@@ -222,30 +218,50 @@ Customer-Churn-Intelligence/
 │   └── customer-risk-retention.png
 │
 └── README.md
+```
 
-⚠️ Data & Methodology Notes
+---
 
-* The dataset is a public IBM Telco Customer Churn benchmark dataset representing a fictional telecommunications company.
-* The original dataset contains 7,043 customer records.
-* The MySQL import contains 7,032 records because 11 records with blank TotalCharges values were excluded during the import process.
-* Churn relationships identified in the analysis represent associations, not causation.
-* Revenue exposure is a proxy based on observed monthly charges.
-* Predictive model results should support business judgment rather than automatically determine customer treatment.
+## Data & Methodology
 
-🚀 Project Outcome
+**Dataset:** IBM Telco Customer Churn benchmark dataset representing a fictional telecommunications company.
 
-This project demonstrates an end-to-end analytics workflow:
+- Original dataset: **7,043 customer records**
+- Duplicate customer IDs: **0**
+- 11 records contained blank `TotalCharges` values
+- The 11 blank-charge records had zero tenure and no recorded churn
+- Python analysis retained all 7,043 records and treated the blank charges as zero
+- MySQL contains 7,032 imported records because the 11 blank-charge records were excluded during import
 
-Raw Data → Data Cleaning → Exploratory Analysis → SQL Analytics → Predictive Modeling → Power BI Dashboard → Business Recommendations
+### Analytical Considerations
 
-The result is a data-driven framework that helps a subscription business understand churn, identify vulnerable customer segments, quantify financial exposure, and prioritize retention strategies.
+- Churn findings represent **associations, not causation**
+- Monthly charges associated with churned customers represent a **revenue exposure proxy**, not a forecast
+- Predictive model results should support business judgment rather than automatically determine customer treatment
 
-👩🏾‍💻 Author
+---
 
-Idah M. Musebe
+## Project Outcome
 
-Data Analyst | Data Engineer
+This project demonstrates an end-to-end analytics workflow connecting technical analysis with business decision-making.
 
-Skills demonstrated:
-Python • SQL • MySQL • Power BI • Data Analytics • Machine Learning • Data Visualization • Business Intelligence
+The solution enables stakeholders to:
 
+- Measure customer churn
+- Identify high-risk customer segments
+- Understand churn patterns
+- Quantify monthly billing exposure
+- Estimate individual churn risk
+- Prioritize retention opportunities
+- Translate analytical findings into actionable business recommendations
+
+---
+
+## Author
+
+**Idah M. Musebe**
+
+**Data Analyst | Data Engineer**
+
+**Core Skills:**  
+Python · SQL · MySQL · Power BI · Pandas · Machine Learning · Data Visualization · Business Intelligence
