@@ -204,16 +204,17 @@ Python was used for:
 Customer-Churn-Intelligence/
 │
 ├── data/
-│   ├── raw/
-│   └── processed/
+│   └── raw/
+│       └── Telco-Customer-Churn.csv
 │
 ├── notebooks/
+│   └── 01.data_audit.ipynb
 │
 ├── sql/
+│   └── Customer_churn.sql
 │
 ├── powerbi/
-│
-├── reports/
+│   └── Customer Churn Intelligence Dashboard.pbix
 │
 └── README.md
 
