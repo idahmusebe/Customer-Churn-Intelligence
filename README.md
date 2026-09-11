@@ -216,6 +216,11 @@ Customer-Churn-Intelligence/
 ├── powerbi/
 │   └── Customer Churn Intelligence Dashboard.pbix
 │
+├── reports/
+│   ├── executive-overview.png
+│   ├── churn-drivers.png
+│   └── customer-risk-retention.png
+│
 └── README.md
 
 ⚠️ Data & Methodology Notes
